@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Calculadora de Rescisão Trabalhista</title>
+</head>
+<body>
+  <header>
+    <main>
+      <form id="form">
+        <h1>Calculadora de Rescisão Trabalhista</h1>
+  
+        <label for="salario">Salário atual:</label>
+        <input type="number" placeholder="0,00" id="salario" required>
+  
+        <label for="dias-trabalhados">Dias trabalhados no mês:</label>
+        <input type="number" id="dias-trabalhados" placeholder="Dias trabalhados no mês da recisão" required>
+  
+        <label for="meses-trabalhados-ano">Meses trabalhados no ano:</label>
+        <input type="number" id="meses-trabalhados-ano" placeholder="Meses trabalhados no ano da recisão" required>
+  
+        <label for="total-de-meses-trabalhados">Tempo total de trabalho em meses:</label>
+        <input type="number" id="total-de-meses-trabalhados" placeholder="Tempo total trabalhado na empresa em meses" required>
+  
+        <button type="button" id="botao" onclick="manipulaDOM()">Calcular</button>
+
+        <p class="display">R$ <span id="resultado"></span></p>
+      </form>
+    </main>
+  </header>
+  <script src="./script.js"></script>
+</body>
+
+</html>
