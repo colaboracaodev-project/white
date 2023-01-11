@@ -7,13 +7,13 @@ As funções a serem criadas receberão como parêmetro os valores de acordo com
 
 Obs.: os items a serem somados já possuem cada um uma função que o retorna.
 */
-const saldoSalario  = 4000;
-const feriasVencidas = null;
+/*const saldoSalario  = 4000;
+const feriasVencidas = 1000;
 const decimoTerceiroProporcional = 1000;
 const feriasProporcionais = 1000;
 const avisoPrevioIndenizado = 1000;
 const depositoMensalFGTS = 1000;
-const multaRescisoria = 1000;
+const multaRescisoria = 1000;*/
 
 
 function calcula_demissao_com_JustaCausa(saldoSalario, feriasVencidas) {
