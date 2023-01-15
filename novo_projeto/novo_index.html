@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>Calculadora de Revisão Trabalhista</title>
+</head>
+<body>
+    </div>
+    <header>
+        <div class="section_logo">
+            <img src="assests/colaboracao dev 1.png" alt="Logo">
+            <span>Colaboração DEV</span>
+        </div>  
+        <div class="logo_team">
+            <p>Team white</p>
+        </div>
+        <div class="section_title_app">
+            <img src="assests/calculate.png" alt="iamgem de Calculadora">
+            <h2>Calculadora de recisão trabalhista</h2>
+        </div>
+    </header>
+    <main>
+        <form id="myForm">
+            <div class="section_data1">
+                <label for="salario">Valor do meu último salário:</label>
+                <input type="text" placeholder="0,00" id="salario" required>
+        
+                <label for="data_inicial">Comecei a trabalhar em:</label>
+                <input type="date" id="data_inicial" required >
+    
+                <label for="data_final">Meu último dia foi:</label>
+                <input type="date" id="data_final" required>
+            </div>
+        
+            <div class="section_data2">
+                <label for="ferias_vencidas">Tenho férias vencidas:</label>
+                <input type="radio" id="ferias_vencidas_sim" name="ferias_vencidas_options" value="sim">
+                <label for="ferias_vencidas_sim">Sim</label>
+
+                <input type="radio" id="ferias_vencidas_nao" name="ferias_vencidas_options" value="não">
+                <label for="ferias_vencidas_nao">Não</label>
+            
+                <label for="aviso_previo">Trabalhei no aviso prévio:</label>
+                <input type="radio" id="aviso_previo_sim" name="aviso_previo_options" value="sim">
+                <label for="aviso_previo_sim">Sim</label>
+
+                <input type="radio" id="aviso_previo_nao" name="aviso_previo_options" value="não">
+                <label for="aviso_previo_nao">Não</label>
+
+                <label for="motivo_recisao">Motivo da recisão:</label>
+                <input type="radio" id="motivo_recisao_sem_justaCausa" name="motivo_recisao_options" value="">
+                <label for="motivo_recisao_sem_justaCausa">Demissão sem justa causa</label>
+
+                <input type="radio" id="motivo_recisao_com_justaCausa" name="motivo_recisao_options" value="">
+                <label for="motivo_recisao_com_justaCausa">Demissão com justa causa</label>
+
+                <input type="radio" id="motivo_recisao_pedido_demissao" name="motivo_recisao_options" value="">
+                <label for="motivo_recisao_pedido_demissao">Pedido de demissão</label>
+
+                <input type="radio" id="motivo_recisao_reciproca" name="motivo_recisao_options" value="">
+                <label for="motivo_recisao_reciproca">Recisão recíproca</label>
+
+                <input type="radio" id="motivo_recisao_comumAcordo" name="motivo_recisao_options" value="">
+                <label for="motivo_recisao_comumAcordo">Demissão comum acordo</label>
+            </div>
+
+            <div class="section_buttons">
+                <button type="reset" id="btn_reset" onclick="manipulaDOM()">Novo Calculo</button>
+                <button type="submit" id="btn_calc_total" onclick="manipulaDOM()">Calcular minha recisão</button>
+            </div>
+        </form>
+        <script src=""></script>
+      </main>
+    
+</html>
