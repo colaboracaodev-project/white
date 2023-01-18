@@ -73,6 +73,7 @@ header h1 {
     font-weight: 500;
 }
 
+
 #myForm {
     display: flex;
     flex-direction: column;
@@ -105,6 +106,49 @@ header h1 {
 
     padding: 16px 32px;
     border-radius: 8px;
+    width: 320px;
+}
+
+#yes-not01 {
+    display: flex;
+    gap: 32px;
+}
+
+#yes-not01 div {
+    display: flex;
+    gap: 8px;
+}
+
+#yes-not02 {
+    display: flex;
+    gap: 32px;
+}
+
+#yes-not02 div {
+    display: flex;
+    gap: 8px;
+}
+
+
+#check01 {
+    padding: 96px 55px;
+}
+
+#check02 {
+    padding: 96px 42px;
+}
+
+
+#check03 {
+    padding: 16px 31px;
+}
+
+.check label {
+   padding-left: 8px;
+}
+
+.check div {
+    margin-bottom: 16px;
 }
 
 button {
