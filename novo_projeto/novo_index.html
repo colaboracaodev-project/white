@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="">
     <title>Calculadora de Revisão Trabalhista</title>
+    <link rel="stylesheet" href="new-style.css">
 </head>
 <body>
     </div>
     <header>
         <div class="section_logo">
             <img src="assests/colaboracao dev 1.png" alt="Logo">
-            <span>Colaboração DEV</span>
+            <h1>Colaboração DEV</h1>
         </div>  
         <div class="logo_team">
-            <p>Team white</p>
+            <h2>Team <span>White</span></h2>
         </div>
         <div class="section_title_app">
             <img src="assests/calculate.png" alt="iamgem de Calculadora">
@@ -25,46 +26,58 @@
     <main>
         <form id="myForm">
             <div class="section_data1">
-                <label for="salario">Valor do meu último salário:</label>
-                <input type="text" placeholder="0,00" id="salario" required>
+                <div class="fill">
+                    <label for="salario">Valor do meu último salário:</label>
+                    <input type="text" placeholder="0,00" id="salario" required>
+                </div>
         
-                <label for="data_inicial">Comecei a trabalhar em:</label>
-                <input type="date" id="data_inicial" pattern="\d{2}/\d{2}/\d{4}" required >
+                <div class="fill">
+                    <label for="data_inicial">Comecei a trabalhar em:</label>
+                    <input type="date" id="data_inicial" pattern="\d{2}/\d{2}/\d{4}" required >
+                </div>
     
-                <label for="data_final">Meu último dia foi:</label>
-                <input type="date" id="data_final" pattern="\d{2}/\d{2}/\d{4}" required>
+                <div class="fill">
+                    <label for="data_final">Meu último dia foi:</label>
+                    <input type="date" id="data_final" pattern="\d{2}/\d{2}/\d{4}" required>
+                </div>
             </div>
         
             <div class="section_data2">
-                <label for="ferias_vencidas">Tenho férias vencidas:</label>
-                <input type="radio" id="ferias_vencidas_sim" name="ferias_vencidas_options" value="sim">
-                <label for="ferias_vencidas_sim">Sim</label>
-
-                <input type="radio" id="ferias_vencidas_nao" name="ferias_vencidas_options" value="não">
-                <label for="ferias_vencidas_nao">Não</label>
+                <div class="fill">
+                    <label for="ferias_vencidas">Tenho férias vencidas:</label>
+                    <div class="check">
+                        <input type="radio" id="ferias_vencidas_sim" name="ferias_vencidas_options" value="sim">
+                        <label for="ferias_vencidas_sim">Sim</label>
+                        <input type="radio" id="ferias_vencidas_nao" name="ferias_vencidas_options" value="não">
+                        <label for="ferias_vencidas_nao">Não</label>
+                    </div>
+                </div>
             
-                <label for="aviso_previo">Trabalhei no aviso prévio:</label>
-                <input type="radio" id="aviso_previo_sim" name="aviso_previo_options" value="sim">
-                <label for="aviso_previo_sim">Sim</label>
+                <div class="fill">
+                    <label for="aviso_previo">Trabalhei no aviso prévio:</label>
+                    <div class="check">
+                        <input type="radio" id="aviso_previo_sim" name="aviso_previo_options" value="sim">
+                        <label for="aviso_previo_sim">Sim</label>
+                        <input type="radio" id="aviso_previo_nao" name="aviso_previo_options" value="não">
+                        <label for="aviso_previo_nao">Não</label>
+                    </div>
+                </div>
 
-                <input type="radio" id="aviso_previo_nao" name="aviso_previo_options" value="não">
-                <label for="aviso_previo_nao">Não</label>
-
-                <label for="motivo_recisao">Motivo da recisão:</label>
-                <input type="radio" id="motivo_recisao_sem_justaCausa" name="motivo_recisao_options" value="">
-                <label for="motivo_recisao_sem_justaCausa">Demissão sem justa causa</label>
-
-                <input type="radio" id="motivo_recisao_com_justaCausa" name="motivo_recisao_options" value="">
-                <label for="motivo_recisao_com_justaCausa">Demissão com justa causa</label>
-
-                <input type="radio" id="motivo_recisao_pedido_demissao" name="motivo_recisao_options" value="">
-                <label for="motivo_recisao_pedido_demissao">Pedido de demissão</label>
-
-                <input type="radio" id="motivo_recisao_reciproca" name="motivo_recisao_options" value="">
-                <label for="motivo_recisao_reciproca">Recisão recíproca</label>
-
-                <input type="radio" id="motivo_recisao_comumAcordo" name="motivo_recisao_options" value="">
-                <label for="motivo_recisao_comumAcordo">Demissão comum acordo</label>
+                <div class="fill">
+                    <div class="check">
+                        <label for="motivo_recisao">Motivo da recisão:</label>
+                        <input type="radio" id="motivo_recisao_sem_justaCausa" name="motivo_recisao_options" value="">
+                        <label for="motivo_recisao_sem_justaCausa">Demissão sem justa causa</label>
+                        <input type="radio" id="motivo_recisao_com_justaCausa" name="motivo_recisao_options" value="">
+                        <label for="motivo_recisao_com_justaCausa">Demissão com justa causa</label>
+                        <input type="radio" id="motivo_recisao_pedido_demissao" name="motivo_recisao_options" value="">
+                        <label for="motivo_recisao_pedido_demissao">Pedido de demissão</label>
+                        <input type="radio" id="motivo_recisao_reciproca" name="motivo_recisao_options" value="">
+                        <label for="motivo_recisao_reciproca">Recisão recíproca</label>
+                        <input type="radio" id="motivo_recisao_comumAcordo" name="motivo_recisao_options" value="">
+                        <label for="motivo_recisao_comumAcordo">Demissão comum acordo</label>
+                    </div>
+                </div>
             </div>
 
             <div class="section_buttons">
