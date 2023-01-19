@@ -263,15 +263,13 @@ button:hover{
     #result-box01,
     #result-box02{
         flex-direction: column;
+        gap: 16px;
     }
 
     .result{
         width: 100%;
     }
 
-    #result-box01,
-    #result-box02{
-        gap: 16px;
-    }
+
 
 }
