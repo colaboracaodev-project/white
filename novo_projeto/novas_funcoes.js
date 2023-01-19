@@ -68,3 +68,4 @@ console.log("Recisao por culpa reciproca: " + recisao_culpa_reciproca);
 let demissao_comum_acordo = calcula_Demissao_Comum_Acordo(saldoSalario, avisoPrevioIndenizado,decimoTerceiroProporcional,
     feriasVencidas, feriasProporcionais, multaRescisoria);
 console.log("Demissao de comum acordo: " + demissao_comum_acordo);
+
