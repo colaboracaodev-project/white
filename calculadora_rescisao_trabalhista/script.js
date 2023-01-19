@@ -64,7 +64,7 @@ function manipulaDOM() {
     
     function calculaTotal(saldoSalario, feriasVencidas, feriasProporcionais, decimoTerceiroProporcional, avisoPrevioIdenizado, multaRescisoria) {
         let total = saldoSalario + feriasVencidas + feriasProporcionais + decimoTerceiroProporcional + avisoPrevioIdenizado + multaRescisoria;
-        console.log(typeof(total));
+        // console.log(typeof(total));
         return total.toFixed(2);  
     }
 }
