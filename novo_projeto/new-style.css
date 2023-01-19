@@ -10,12 +10,18 @@
 body {
     background-color: #0E0E0F;
     color: white;
+
 }
 
-header {
+header, 
+main {
     display: flex;
+    max-width: 1128px;
+    width: 100%;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin: auto;
     margin-bottom: 40px;
 }
 
@@ -39,6 +45,7 @@ header h1 {
     border-radius: 8px;
     width: 128px;
 }
+
 
 .logo_team {
     display: flex;
@@ -65,12 +72,12 @@ header h1 {
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-
     margin-top: 40px;
 }
 
 .section_title_app h2 {
     font-weight: 500;
+    font-size: 20px;
 }
 
 main {
@@ -109,10 +116,20 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 24px;
-
     padding: 16px 32px;
     border-radius: 8px;
     width: 320px;
+}
+
+.fill input{
+
+    padding: 12px 8px;
+    border: none;
+    border-bottom: 4px solid;
+    border-color: #3F46D2;
+    background-color: #1C1C1E;
+    color: #FAFAFA;
+    font-size: 18px;
 }
 
 #yes-not01 {
@@ -163,6 +180,15 @@ button {
     border: none;
     padding: 16px 32px;
     border-radius: 55px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    background-color: #8388E2;
+
 }
 
 .section_buttons {
@@ -175,8 +201,6 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 936px;
-    height: 279px;
     gap: 40px;
     border: 4px solid #5CD65C;
     margin: 40px;
@@ -200,12 +224,12 @@ button {
 }
 
 .boxes {
+    width: auto;
     display: flex;
     flex-direction: column;
     gap: 16px;
 
 }
-
 
 .result {
     display: flex;
@@ -217,4 +241,37 @@ button {
     font-size: 14px;
     border-left: 4px solid #5CD65C;
     border-radius: 8px;
+}
+
+@media (max-width: 960px) {
+
+    .section_logo{
+        flex-direction: column;
+    }
+    .section_title_app{
+        justify-content: center;
+        width: 80%;
+    }
+
+    #resultados p{
+        font-size: 24px;
+    }
+
+    .section_data1,
+    .section_data2,
+    .section_buttons,
+    #result-box01,
+    #result-box02{
+        flex-direction: column;
+    }
+
+    .result{
+        width: 100%;
+    }
+
+    #result-box01,
+    #result-box02{
+        gap: 16px;
+    }
+
 }
