@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Calculadora de Rescisão Trabalhista</title>
+</head>
+
+<body>
+  <header>
+    <div class="head-logo">
+      <img src="./assets/img/logo-colaboracao-dev.png" alt="logo colaboracao dev">
+      <p>Colaboração DEV</p>
+    </div>
+    <div class="team">
+      <p>Team</p>
+      <span>Black</span>
+    </div>
+  </header>
+
+  <main>
+    <form id="form">
+      <div class="title">
+        <img src="./assets/img/icon-calculate.svg" alt="icone calculadora">
+        <h1>Calculadora de Rescisão Trabalhista</h1>
+      </div>
+
+      <div class="cards">
+        <div class="card-input">
+          <label for="salario">Valor do meu último salário</label>
+          <input type="number" pattern="/d+" placeholder="R$ 0.000,00" min="0" id="salario" required>
+        </div>
+
+        <div class="card-input">
+          <label for="dias-trabalhados">Comecei a trabalhar em</label>
+          <input type="date" name="" id="start_date">
+        </div>
+
+        <div class="card-input">
+          <label for="dias-trabalhadoss">Meu último dia foi</label>
+          <input type="date" name="" id="end_date">
+        </div>
+
+        <div class="card-input">
+          <label>Tenho férias vencidas</label>
+          <div class="radio-buttons">
+            <div class="radio-option">
+              <input type="radio" name="ferias-vencidas" id="nao-ferias-vencias">
+              <label for="nao-ferias-vencias">Não</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="ferias-vencidas" id="sim-ferias-vencias">
+              <label for="sim-ferias-vencias">Sim</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-input">
+          <label for="meses-trabalhados-ano">Trabalhei no aviso prévio</label>
+          <div class="radio-buttons">
+            <div class="radio-option">
+              <input type="radio" name="aviso-previo" id="nao-aviso-previo">
+              <label for="nao-aviso-previo">Não</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="aviso-previo" id="sim-aviso-previo">
+              <label for="sim-aviso-previo">Sim</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-input">
+          <p>Motivo da rescisão</p>
+          <div class="radio-buttons rescisao">
+            <div class="radio-option">
+              <input type="radio" name="motivo-rescisao" id="sem-justa-causa">
+              <label for="sem-justa-causa">Demissão sem justa causa</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="motivo-rescisao" id="com-justa-causa">
+              <label for="com-justa-causa">Demissão com justa causa</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="motivo-rescisao" id="pedido-de-demissao">
+              <label for="pedido-de-demissao">Pedido de demissão</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="motivo-rescisao" id="reciproca">
+              <label for="reciproca">Recisão recíproca</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="motivo-rescisao" id="acordo">
+              <label for="acordo">Demissão comum acordo</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button type="reset" class="btn">Novo cálculo</button>
+        <button type="button" class="btn" onclick="main()">Calcular minha rescisão</button>
+      </div>
+    </form>
+
+    <div class="results">
+      <div class="total">
+        <p>Total a receber: </p>
+        <p>R$ <span id="total">9.500,00</span></p>
+      </div>
+      <ul class="cards-result">
+        <li class="card-result">
+          <span>Salário proporcional </span>
+          <p>R$ <span id="salarioProporcionalCalculado">2.000,00</span></p>
+        </li>
+        <li class="card-result">
+          <span>Férias vencidas </span>
+          <p>R$ <span id="feriasVencidasCalculada">2.000,00</span></p>
+        </li>
+        <li class="card-result">
+          <span>Férias proporcional</span>
+          <p>R$ <span id="feriasProporcionalCalculada">2.000,00</span></p>
+        </li>
+        <li class="card-result">
+          <span>Aviso prévio indenizado </span>
+          <p>R$ <span id="avisoPrevioCalculado">2.000,00</span></p>
+        </li>
+        <li class="card-result">
+          <span>Multa Rescisória </span>
+          <p>R$ <span id="multaRescisoriaCalculada">2.000,00</span></p>
+        </li>
+        <li class="card-result">
+          <span>13º proporcional </span>
+          <p>R$ <span id="decimoTerceiroCalculado">2.000,00</span></p>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
