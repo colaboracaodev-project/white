@@ -12,136 +12,234 @@
 //     console.log(resultado.toFixed(2));
 // }
 
-function main() {
-    const salarioDigitado = 1000;
-    const dataEntrada = new Date('2020-01-01');
-    const dataSaida = new Date('2022-01-01');
-    const diasMes = dataEntrada.getDate() + 1;
-    const mesesAno = dataSaida.getMonth() + 1;
-    const totalDeMesesTrabalhados = parseInt(calculaData(dataEntrada, dataSaida));
-    const recebeAvisoPrevioIndenizado = true;
-    const possuiFeriasVencidas = true;
+function main() 
+{
+    let salarioDigitado             = document.getElementById('salario');
+    let dataEntrada                 = document.getElementById('start_date');
+    let dataSaida                   = document.getElementById('end_date');
+    // let diasMes                     = dataEntrada.getDate() + 1;
+    // let mesesAno                    = dataSaida.getMonth() + 1;
+    let totalDeMesesTrabalhados     = calculaData(dataEntrada, dataSaida);
+    let recebeAvisoPrevioIndenizado = document.querySelector('input[name="aviso-previo"]:checked').value;
+    let possuiFeriasVencidas        = document.querySelector('input[name="ferias-vencidas"]:checked').value;
+    let motivo_recisao              = document.querySelector('input[name="motivo-rescisao"]:checked').value
 
-    const total = document.getElementById('total');
-    const resultado = calculaDemissaoSemJustaCausa(salarioDigitado, diasMes, mesesAno, totalDeMesesTrabalhados,recebeAvisoPrevioIndenizado,possuiFeriasVencidas);
-    total.innerHTML = resultado.toFixed(2);
+    switch (motivo_recisao) 
+    {
+        case "0":
+            calculaDemissaoSemJustaCausa(salarioDigitado, diasMes, mesesAno, totalDeMesesTrabalhados,
+                recebeAvisoPrevioIndenizado, possuiFeriasVencidas);
 
-    const saldoSalarioCalculado = document.getElementById('salarioProporcionalCalculado');
-    const avisoPrevioIndenizadoCalculado = document.getElementById('avisoPrevioCalculado');
-    const decimoTerceiroProporcionalCalculado = document.getElementById('decimoTerceiroCalculado');
-    const feriasVencidasCalculada = document.getElementById('feriasVencidasCalculada');
-    const feriasProporcionaisCalculada = document.getElementById('feriasProporcionalCalculada');
-    const multaRescisoriaCalculada = document.getElementById('multaRescisoriaCalculada');
-}
+            break;
 
-function calculaDemissaoSemJustaCausa(salario, diasMes, mesesAno, totalDeMesesTrabalhados,recebeAvisoPrevioIndenizado,possuiFeriasVencidas) {
-    console.log(`salario ${salario} diasMes ${diasMes} mesesAno ${mesesAno} mesesTrabalhados ${totalDeMesesTrabalhados}`);
+        case "1":
+            calculaDemissaoPorJustaCausa(salarioDigitado, diasMes, mesesAno, totalDeMesesTrabalhados,
+                recebeAvisoPrevioIndenizado, possuiFeriasVencidas);
+            
+            break;
 
-    let saldoSalario = parseFloat(calculaSaldoSalario(salario, diasMes));
+        case "2":
+            calculaPedidoDeDemissao(salarioDigitado, diasMes, mesesAno, totalDeMesesTrabalhados,
+                recebeAvisoPrevioIndenizado, possuiFeriasVencidas);
+
+            break;
+        
+        case "3":
+            calculaRescisaoPorCulpaReciproca(salarioDigitado, diasMes, mesesAno, totalDeMesesTrabalhados,
+                recebeAvisoPrevioIndenizado, possuiFeriasVencidas);
+            
+            break;
+        
+        case "4":
+            calculaDemissaoPorComumAcordo(salarioDigitado, diasMes, mesesAno, totalDeMesesTrabalhados,
+                recebeAvisoPrevioIndenizado, possuiFeriasVencidas);
+                        
+            break;
+    
+        default:
+            break;
+    }
+} 
+
+function calculaDemissaoSemJustaCausa(salarioDigitado, totalDeMesesTrabalhados,
+    recebeAvisoPrevioIndenizado, possuiFeriasVencidas) 
+{
+    let saldoSalario = parseFloat(calculaSaldoSalario(salarioDigitado, totalDeMesesTrabalhados));
     let avisoPrevioIndenizado = 0;
-    let decimoTerceiroProporcional = parseFloat(calculaDecimoTerceiroProporcional(salario, mesesAno));
+    let decimoTerceiroProporcional = parseFloat(calculaDecimoTerceiroProporcional(salarioDigitado, totalDeMesesTrabalhados));
     let feriasVencidas = 0;
-    let feriasProporcionais = parseFloat(calculaFeriasProporcionais(mesesAno, feriasVencidas));
-    let multaRescisoria = parseFloat(calculaMultaRescisoria(salario, totalDeMesesTrabalhados));
+    let feriasProporcionais = 0;
+    let multaRescisoria = parseFloat(calculaMultaRescisoria(salarioDigitado, totalDeMesesTrabalhados));
 
-    if (recebeAvisoPrevioIndenizado) {
-        avisoPrevioIndenizado = parseFloat(calculaAvisoPrevioIndenizado(salario));
+    if (recebeAvisoPrevioIndenizado) 
+    {
+        avisoPrevioIndenizado = parseFloat(calculaAvisoPrevioIndenizado(salarioDigitado));
     }
 
-    if (possuiFeriasVencidas) {
-        feriasVencidas = parseFloat(calculaFeriasVencidas(salario));
+    if (possuiFeriasVencidas) 
+    {
+        feriasVencidas = parseFloat(calculaFeriasVencidas(salarioDigitado));
+        feriasProporcionais = parseFloat(calculaFeriasProporcionais(totalDeMesesTrabalhados, feriasVencidas));
     }
 
-    let demissaoSemJustaCausa = (saldoSalario + avisoPrevioIndenizado + decimoTerceiroProporcional + feriasVencidas + feriasProporcionais + multaRescisoria);
+    let demissaoSemJustaCausa = (saldoSalario + avisoPrevioIndenizado + decimoTerceiroProporcional + 
+        (feriasVencidas + (feriasVencidas / 3)) + (feriasProporcionais + (feriasProporcionais / 3)) + multaRescisoria * 0.40);
+    
+    document.getElementById("total").innerHTML                        = demissaoSemJustaCausa.toFixed(2);
+    document.getElementById("salarioProporcionalCalculado").innerHTML = saldoSalario.toFixed(2);
+    document.getElementById("feriasVencidasCalculada").innerHTML      = feriasVencidas.toFixed(2);
+    document.getElementById("feriasProporcionalCalculada").innerHTML  = feriasProporcionais.toFixed(2);
+    document.getElementById("avisoPrevioCalculado").innerHTML         = avisoPrevioIndenizado.toFixed(2);
+    document.getElementById("multaRescisoriaCalculada").innerHTML     = multaRescisoria.toFixed(2);
+    document.getElementById("decimoTerceiroCalculado").innerHTML      = decimoTerceiroProporcional.toFixed(2);
 
-    console.log(demissaoSemJustaCausa);
-
-    return demissaoSemJustaCausa;
 }
 
-
-function calculaDemissaoPorJustaCausa() {
-
-    let saldoSalario = calculaSaldoSalario(salario, diasMes);
-    let feriasVencidas = calculaFeriasVencidas(salario);
-
-    let demissaoSemJustaCausa = saldoSalario + feriasVencidas;
-
-    return demissaoSemJustaCausa.toFixed(2);
-}
-
-
-function calculaPedidoDeDemissao() {
-
-    let saldoSalario = calculaSaldoSalario(salario, diasMes);
-    let decimoTerceiroProporcional = calculaDecimoTerceiroProporcional(salario, mesesAno);
-    let feriasVencidas = 0;
-    let feriasProporcionais = calculaFeriasProporcionais(mesesAno, feriasVencidas);
-
-    if (possuiFeriasVencidas) {
-        feriasVencidas = calculaFeriasVencidas(salario);
-    }
-
-    let pedidoDeDemissao = saldoSalario + decimoTerceiroProporcional + feriasVencidas + feriasProporcionais;
-
-    return pedidoDeDemissao.toFixed(2);
-}
-
-
-function calculaRescisaoPorCulpaReciproca() {
-
-    let saldoSalario = calculaSaldoSalario(salario, diasMes);
+function calculaDemissaoPorJustaCausa(salarioDigitado, totalDeMesesTrabalhados,
+    recebeAvisoPrevioIndenizado, possuiFeriasVencidas) 
+{
+    let saldoSalario = parseFloat(calculaSaldoSalario(salarioDigitado, totalDeMesesTrabalhados));
     let avisoPrevioIndenizado = 0;
-    let decimoTerceiroProporcional = (calculaDecimoTerceiroProporcional(salario, mesesAno) / 2);
+    let decimoTerceiroProporcional = parseFloat(calculaDecimoTerceiroProporcional(salarioDigitado, totalDeMesesTrabalhados));
     let feriasVencidas = 0;
-    let feriasProporcionais = (calculaFeriasProporcionais(mesesAno, feriasVencidas) / 2);
-    let multaRescisoria = (calculaMultaRescisoria(salario, totalDeMesesTrabalhados) / 5);
+    let feriasProporcionais = 0;
+    let multaRescisoria = parseFloat(calculaMultaRescisoria(salarioDigitado, totalDeMesesTrabalhados));
 
-    if (recebeAvisoPrevioIndenizado) {
-        avisoPrevioIndenizado = (calculaAvisoPrevioIndenizado(salario) / 2);
+    if (recebeAvisoPrevioIndenizado) 
+    {
+        avisoPrevioIndenizado = parseFloat(calculaAvisoPrevioIndenizado(salarioDigitado));
     }
 
-    if (possuiFeriasVencidas) {
-        feriasVencidas = calculaFeriasVencidas(salario);
+    if (possuiFeriasVencidas) 
+    {
+        feriasVencidas = parseFloat(calculaFeriasVencidas(salarioDigitado));
+        feriasProporcionais = parseFloat(calculaFeriasProporcionais(totalDeMesesTrabalhados, feriasVencidas));
     }
 
-    let rescisaoPorCulpaReciproca = saldoSalario + avisoPrevioIndenizado + decimoTerceiroProporcional + feriasVencidas + feriasProporcionais + multaRescisoria;
+    let demissaoPorJustaCausa = saldoSalario + (feriasVencidas + (feriasVencidas / 3));
+    
+    document.getElementById("total").innerHTML                        = demissaoPorJustaCausa.toFixed(2);
+    document.getElementById("salarioProporcionalCalculado").innerHTML = saldoSalario.toFixed(2);
+    document.getElementById("feriasVencidasCalculada").innerHTML      = feriasVencidas.toFixed(2);
+    document.getElementById("feriasProporcionalCalculada").innerHTML  = feriasProporcionais.toFixed(2);
+    document.getElementById("avisoPrevioCalculado").innerHTML         = avisoPrevioIndenizado.toFixed(2);
+    document.getElementById("multaRescisoriaCalculada").innerHTML     = multaRescisoria.toFixed(2);
+    document.getElementById("decimoTerceiroCalculado").innerHTML      = decimoTerceiroProporcional.toFixed(2);
 
-    return rescisaoPorCulpaReciproca.toFixed(2);
 }
 
-
-function calculaDemissaoPorComumAcordo() {
-
-    let saldoSalario = calculaSaldoSalario(salario, diasMes);
+function calculaPedidoDeDemissao(salarioDigitado, totalDeMesesTrabalhados,
+    recebeAvisoPrevioIndenizado, possuiFeriasVencidas) 
+{
+    let saldoSalario = parseFloat(calculaSaldoSalario(salarioDigitado, totalDeMesesTrabalhados));
     let avisoPrevioIndenizado = 0;
-    let decimoTerceiroProporcional = calculaDecimoTerceiroProporcional(salario, mesesAno);
+    let decimoTerceiroProporcional = parseFloat(calculaDecimoTerceiroProporcional(salarioDigitado, totalDeMesesTrabalhados));
     let feriasVencidas = 0;
-    let feriasProporcionais = calculaFeriasProporcionais(mesesAno, feriasVencidas);
-    let multaRescisoria = (calculaMultaRescisoria(salario, totalDeMesesTrabalhados) / 5);
-
-    if (recebeAvisoPrevioIndenizado) {
-        avisoPrevioIndenizado = (calculaAvisoPrevioIndenizado(salario) / 2);
+    let feriasProporcionais = 0;
+    let multaRescisoria = parseFloat(calculaMultaRescisoria(salarioDigitado, totalDeMesesTrabalhados));
+    
+    if (recebeAvisoPrevioIndenizado) 
+    {
+         avisoPrevioIndenizado = parseFloat(calculaAvisoPrevioIndenizado(salarioDigitado));
     }
-
-    if (possuiFeriasVencidas) {
-        feriasVencidas = calculaFeriasVencidas(salario);
+    
+    if (possuiFeriasVencidas) 
+    {
+        feriasVencidas = parseFloat(calculaFeriasVencidas(salarioDigitado));
+        feriasProporcionais = parseFloat(calculaFeriasProporcionais(totalDeMesesTrabalhados, feriasVencidas));
     }
+    
+    let pedidoDeDemissao = saldoSalario + decimoTerceiroProporcional + (feriasVencidas + (feriasVencidas / 3)) +
+     (feriasProporcionais + (feriasProporcionais / 3));
 
-    let demissaoPorComumAcordo = saldoSalario + avisoPrevioIndenizado + decimoTerceiroProporcional + feriasVencidas + feriasProporcionais + multaRescisoria;
+    document.getElementById("total").innerHTML                        = pedidoDeDemissao.toFixed(2);
+    document.getElementById("salarioProporcionalCalculado").innerHTML = saldoSalario.toFixed(2);
+    document.getElementById("feriasVencidasCalculada").innerHTML      = feriasVencidas.toFixed(2);
+    document.getElementById("feriasProporcionalCalculada").innerHTML  = feriasProporcionais.toFixed(2);
+    document.getElementById("avisoPrevioCalculado").innerHTML         = avisoPrevioIndenizado.toFixed(2);
+    document.getElementById("multaRescisoriaCalculada").innerHTML     = multaRescisoria.toFixed(2);
+    document.getElementById("decimoTerceiroCalculado").innerHTML      = decimoTerceiroProporcional.toFixed(2);
 
-    return demissaoPorComumAcordo.toFixed(2);
 }
 
+
+function calculaRescisaoPorCulpaReciproca(salarioDigitado, totalDeMesesTrabalhados,
+    recebeAvisoPrevioIndenizado, possuiFeriasVencidas) 
+{
+    let saldoSalario = parseFloat(calculaSaldoSalario(salarioDigitado, totalDeMesesTrabalhados));
+    let avisoPrevioIndenizado = 0;
+    let decimoTerceiroProporcional = parseFloat(calculaDecimoTerceiroProporcional(salarioDigitado, totalDeMesesTrabalhados));
+    let feriasVencidas = 0;
+    let feriasProporcionais = 0;
+    let multaRescisoria = parseFloat(calculaMultaRescisoria(salarioDigitado, totalDeMesesTrabalhados));
+    
+    if (recebeAvisoPrevioIndenizado) 
+    {
+        avisoPrevioIndenizado = parseFloat(calculaAvisoPrevioIndenizado(salarioDigitado));
+    }
+    
+    if (possuiFeriasVencidas) 
+    {
+        feriasVencidas = parseFloat(calculaFeriasVencidas(salarioDigitado));
+        feriasProporcionais = parseFloat(calculaFeriasProporcionais(totalDeMesesTrabalhados, feriasVencidas));
+    }
+    
+    let rescisaoPorCulpaReciproca = saldoSalario + (avisoPrevioIndenizado / 2) + (decimoTerceiroProporcional / 2) + 
+    (feriasVencidas + (feriasVencidas / 3)) + ((feriasProporcionais /2) + (feriasProporcionais / 3)) + multaRescisoria * 0.20;
+
+    document.getElementById("total").innerHTML                        = rescisaoPorCulpaReciproca.toFixed(2);
+    document.getElementById("salarioProporcionalCalculado").innerHTML = saldoSalario.toFixed(2);
+    document.getElementById("feriasVencidasCalculada").innerHTML      = feriasVencidas.toFixed(2);
+    document.getElementById("feriasProporcionalCalculada").innerHTML  = feriasProporcionais.toFixed(2);
+    document.getElementById("avisoPrevioCalculado").innerHTML         = avisoPrevioIndenizado.toFixed(2);
+    document.getElementById("multaRescisoriaCalculada").innerHTML     = multaRescisoria.toFixed(2);
+    document.getElementById("decimoTerceiroCalculado").innerHTML      = decimoTerceiroProporcional.toFixed(2);
+
+}
+
+function calculaDemissaoPorComumAcordo(salarioDigitado, totalDeMesesTrabalhados,
+    recebeAvisoPrevioIndenizado, possuiFeriasVencidas) 
+{
+
+    let saldoSalario = parseFloat(calculaSaldoSalario(salarioDigitado, totalDeMesesTrabalhados));
+    let avisoPrevioIndenizado = 0;
+    let decimoTerceiroProporcional = parseFloat(calculaDecimoTerceiroProporcional(salarioDigitado, totalDeMesesTrabalhados));
+    let feriasVencidas = 0;
+    let feriasProporcionais = 0;
+    let multaRescisoria = parseFloat(calculaMultaRescisoria(salarioDigitado, totalDeMesesTrabalhados));
+
+    if (recebeAvisoPrevioIndenizado) 
+    {
+        avisoPrevioIndenizado = parseFloat(calculaAvisoPrevioIndenizado(salarioDigitado));
+    }
+
+    if (possuiFeriasVencidas) 
+    {
+        feriasVencidas = parseFloat(calculaFeriasVencidas(salarioDigitado));
+        feriasProporcionais = parseFloat(calculaFeriasProporcionais(totalDeMesesTrabalhados, feriasVencidas));
+    }
+
+    let demissaoPorComumAcordo = saldoSalario + (avisoPrevioIndenizado / 2) + decimoTerceiroProporcional +
+     (feriasVencidas + (feriasVencidas / 3))+ (feriasProporcionais + (feriasProporcionais / 3)) + (multaRescisoria * 0.20);
+
+    document.getElementById("total").innerHTML                        = demissaoPorComumAcordo.toFixed(2);
+    document.getElementById("salarioProporcionalCalculado").innerHTML = saldoSalario.toFixed(2);
+    document.getElementById("feriasVencidasCalculada").innerHTML      = feriasVencidas.toFixed(2);
+    document.getElementById("feriasProporcionalCalculada").innerHTML  = feriasProporcionais.toFixed(2);
+    document.getElementById("avisoPrevioCalculado").innerHTML         = avisoPrevioIndenizado.toFixed(2);
+    document.getElementById("multaRescisoriaCalculada").innerHTML     = multaRescisoria.toFixed(2);
+    document.getElementById("decimoTerceiroCalculado").innerHTML      = decimoTerceiroProporcional.toFixed(2);
+
+}
 
 // funções auxiliares
-function calculaSaldoSalario(salarioDigitado, diasMes) {
-    let saldoSalario = (salarioDigitado / 30) * diasMes;
+function calculaSaldoSalario(salarioDigitado, totalDeMesesTrabalhados) {
+    let saldoSalario = (salarioDigitado / 30) * totalDeMesesTrabalhados;
     return saldoSalario;
 }
 
-function calculaDecimoTerceiroProporcional(salarioDigitado, mesesAno) {
-    let decimoTerceiro = (salarioDigitado / 12) * mesesAno;
+function calculaDecimoTerceiroProporcional(salarioDigitado, totalDeMesesTrabalhados) {
+    let decimoTerceiro = (salarioDigitado / 12) * totalDeMesesTrabalhados;
     return decimoTerceiro;
 }
 
@@ -150,28 +248,30 @@ function calculaFeriasVencidas(salarioDigitado) {
     return feriasVencidas;
 }
 
-function calculaFeriasProporcionais(mesesAno, feriasVencidas) {
-    let feriasProporcionais = (feriasVencidas / 12) * mesesAno;
+function calculaFeriasProporcionais(totalDeMesesTrabalhados, feriasVencidas) {
+    let feriasProporcionais = (feriasVencidas / 12) * totalDeMesesTrabalhados;
     return feriasProporcionais;
 }
 
-function calculaAvisoPrevioIndenizado(salario) {
-    let avisoPrevioIndenizado = (salario / 30) * 33;
+function calculaAvisoPrevioIndenizado(salarioDigitado) {
+    let avisoPrevioIndenizado = (salarioDigitado / 30) * 33;
     return avisoPrevioIndenizado;
 }
 
-function calculaMultaRescisoria(salario, totalDeMesesTrabalhados) {
-    let depositoMensalFGTS = salario * 0.08;
+function calculaMultaRescisoria(salarioDigitado, totalDeMesesTrabalhados) {
+    let depositoMensalFGTS = salarioDigitado * 0.08;
     let totalContribuicaoFGTS = depositoMensalFGTS * totalDeMesesTrabalhados;
-    let multaRescisoria = totalContribuicaoFGTS * 0.4;
+    let multaRescisoria = totalContribuicaoFGTS;
     return multaRescisoria;
 }
 
-function calculaData(date1, date2) {
-    let start = Math.floor(date1 / (3600 * 24 * 1000));
-    let end = Math.floor(date2 / (3600 * 24 * 1000));
+function calculaData(date1, date2) 
+{
+    return moment(date2).diff(moment(date1), 'months');
 
-    let daysDiff = end - start;
-    let monthDiff = daysDiff / 30;
-    return monthDiff.toFixed();
+}
+
+function limparCampos() {
+    document.getElementById("form").reset();
+    document.getElementById("total").innerHTML = "";
 }

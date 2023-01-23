@@ -17,12 +17,12 @@
     </div>
     <div class="team">
       <p>Team</p>
-      <span>Black</span>
+      <span>White</span>
     </div>
   </header>
 
   <main>
-    <form id="form">
+    <form id="form" onsubmit="main(); return false;">
       <div class="title">
         <img src="./assets/img/icon-calculate.svg" alt="icone calculadora">
         <h1>Calculadora de Rescisão Trabalhista</h1>
@@ -48,11 +48,11 @@
           <label>Tenho férias vencidas</label>
           <div class="radio-buttons">
             <div class="radio-option">
-              <input type="radio" name="ferias-vencidas" id="nao-ferias-vencias">
+              <input type="radio" name="ferias-vencidas" id="nao-ferias-vencias" value="false">
               <label for="nao-ferias-vencias">Não</label>
             </div>
             <div class="radio-option">
-              <input type="radio" name="ferias-vencidas" id="sim-ferias-vencias">
+              <input type="radio" name="ferias-vencidas" id="sim-ferias-vencias" value="true">
               <label for="sim-ferias-vencias">Sim</label>
             </div>
           </div>
@@ -62,11 +62,11 @@
           <label for="meses-trabalhados-ano">Trabalhei no aviso prévio</label>
           <div class="radio-buttons">
             <div class="radio-option">
-              <input type="radio" name="aviso-previo" id="nao-aviso-previo">
+              <input type="radio" name="aviso-previo" id="nao-aviso-previo" value="false">
               <label for="nao-aviso-previo">Não</label>
             </div>
             <div class="radio-option">
-              <input type="radio" name="aviso-previo" id="sim-aviso-previo">
+              <input type="radio" name="aviso-previo" id="sim-aviso-previo" value="true">
               <label for="sim-aviso-previo">Sim</label>
             </div>
           </div>
@@ -76,23 +76,23 @@
           <p>Motivo da rescisão</p>
           <div class="radio-buttons rescisao">
             <div class="radio-option">
-              <input type="radio" name="motivo-rescisao" id="sem-justa-causa">
+              <input type="radio" name="motivo-rescisao" id="sem-justa-causa" value="0">
               <label for="sem-justa-causa">Demissão sem justa causa</label>
             </div>
             <div class="radio-option">
-              <input type="radio" name="motivo-rescisao" id="com-justa-causa">
+              <input type="radio" name="motivo-rescisao" id="com-justa-causa" value="1">
               <label for="com-justa-causa">Demissão com justa causa</label>
             </div>
             <div class="radio-option">
-              <input type="radio" name="motivo-rescisao" id="pedido-de-demissao">
+              <input type="radio" name="motivo-rescisao" id="pedido-de-demissao" value="2">
               <label for="pedido-de-demissao">Pedido de demissão</label>
             </div>
             <div class="radio-option">
-              <input type="radio" name="motivo-rescisao" id="reciproca">
+              <input type="radio" name="motivo-rescisao" id="reciproca" value="3">
               <label for="reciproca">Recisão recíproca</label>
             </div>
             <div class="radio-option">
-              <input type="radio" name="motivo-rescisao" id="acordo">
+              <input type="radio" name="motivo-rescisao" id="acordo" value="4">
               <label for="acordo">Demissão comum acordo</label>
             </div>
           </div>
@@ -100,8 +100,8 @@
       </div>
 
       <div class="buttons">
-        <button type="reset" class="btn">Novo cálculo</button>
-        <button type="button" class="btn" onclick="main()">Calcular minha rescisão</button>
+        <button type="reset" class="btn" onclick="limparCampos()">Novo cálculo</button>
+        <button type="submit" class="btn" onclick="main()">Calcular minha rescisão</button>
       </div>
     </form>
 
@@ -139,7 +139,8 @@
     </div>
   </main>
 
-  <script src="./script.js"></script>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
 </body>
 
 </html>
