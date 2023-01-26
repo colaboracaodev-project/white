@@ -1,16 +1,3 @@
-// function main() {
-//     const salarioDigitado = document.getElementById('salario').value;
-//     const dataEntrada = new Date(document.getElementById('start_date').value);
-//     const dataSaida = new Date(document.getElementById('end_date').value);
-//     const diasMes = dataEntrada.getDate() + 1;
-//     const mesesAno = dataSaida.getMonth() + 1;
-//     const totalDeMesesTrabalhados = parseInt(calculaDataMeses(dataEntrada, dataSaida));
-//     const recebeAvisoPrevioIndenizado = true;
-//     const possuiFeriasVencidas = true;
-
-//     const resultado = calculaDemissaoSemJustaCausa(salarioDigitado, diasMes, mesesAno, totalDeMesesTrabalhados,recebeAvisoPrevioIndenizado,possuiFeriasVencidas);
-//     console.log(resultado.toFixed(2));
-// }
 function main() 
 {
   let salarioDigitado             = parseFloat(document.getElementById('salario').value);
