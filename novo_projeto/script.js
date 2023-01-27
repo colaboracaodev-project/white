@@ -11,9 +11,7 @@ function main()
   let possuiFeriasVencidas        = document.querySelector('input[name="ferias-vencidas"]:checked').value;
   let motivo_recisao              = document.querySelector('input[name="motivo-rescisao"]:checked').value;
   
-  console.log(typeof(salarioDigitado), dataEntrada, dataSaida, typeof(diaSaida), typeof(mesSaida), totalDeMesesTrabalhados, recebeAvisoPrevioIndenizado,possuiFeriasVencidas,motivo_recisao);
-
-    switch (motivo_recisao) 
+  switch (motivo_recisao) 
     {
       case "0":
           calculaDemissaoSemJustaCausa(salarioDigitado, totalDeMesesTrabalhados, diaSaida, mesSaida,dataEntrada,dataSaida,
