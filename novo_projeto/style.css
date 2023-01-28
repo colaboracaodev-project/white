@@ -192,6 +192,7 @@ main {
 }
 
 .results {
+  display: none;
   background-color: var(--bg-grey-500);
   margin: 0 auto;
   border-radius: 8px;

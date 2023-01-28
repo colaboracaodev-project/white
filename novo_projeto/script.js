@@ -10,7 +10,8 @@ function main()
   let recebeAvisoPrevioIndenizado = document.querySelector('input[name="aviso-previo"]:checked').value;
   let possuiFeriasVencidas        = document.querySelector('input[name="ferias-vencidas"]:checked').value;
   let motivo_recisao              = document.querySelector('input[name="motivo-rescisao"]:checked').value;
-  
+  const results                   = document.querySelector(".results")
+
   switch (motivo_recisao) 
     {
       case "0":
@@ -46,6 +47,7 @@ function main()
       default:
         break;
       }
+      results.style.display = "block"
     }
 
 function calculaDemissaoSemJustaCausa(salarioDigitado, totalDeMesesTrabalhados, diaSaida,mesSaida,dataEntrada,dataSaida,
@@ -294,5 +296,7 @@ function limparCampos()
   document.getElementById("avisoPrevioCalculado").innerText         = formato.format("0");
   document.getElementById("multaRescisoriaCalculada").innerText     = formato.format("0");
   document.getElementById("decimoTerceiroCalculado").innerText      = formato.format("0");
+  const results = document.querySelector(".results")
+  results.style.display = "none"
 }
 
