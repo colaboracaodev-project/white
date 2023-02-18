@@ -27,7 +27,7 @@ Esse projeto é uma iniciativa muito legal do Eduardo Escudeiro de juntar vário
 Agradecimento especial a todos do time White que trabalharam juntos nesse projeto:
 
 
-[Rayanne Blima](https://www.linkedin.com/in/rayanneblima/
+[Rayanne Blima](https://www.linkedin.com/in/rayanneblima/)
 
 [Josué Silva](https://www.linkedin.com/in/josuedev/)
 
