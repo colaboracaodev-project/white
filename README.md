@@ -6,17 +6,38 @@ Repositório contendo os arquivos do projeto Colaboração Dev para o Time White
 
 ## 🔨 Funcionalidades do projeto
 
-A calculadora tem como função calcular a resisão trabalhista com base nas datas de entrada e saída de um funcionario, para o cálculo também é considerado o tipo de rescisão.
+A calculadora tem como função calcular a rescisão trabalhista com base nas datas de entrada e saída de um funcionário, para o cálculo também é considerado o tipo de rescisão.
 
 ## ✔️ Técnicas e tecnologias utilizadas
 
-Foram utilizados HTML CSS E JS para fazer todas as funcionalidades dos projeto, para o calculo das datas utilizamos uma biblioteca externa chamada "moment"
+Foram utilizados HTML CSS E JS para fazer todas as funcionalidades dos projeto, para o cálculo das datas utilizamos uma biblioteca externa chamada "moment"
 
 
-[Veja o projeto final do curso em funcionamento](link).
+[Teste o projeto aqui](link).
+[UI do projeto](https://www.behance.net/gallery/161662459/Web-app-Colaboracao-DEV)
 
-## 🛠️ Abrir e rodar o projeto
+## 🛠️ Como rodar o projeto
 
-Para abrir e rodar o projeto, basta clonar este repositorio e abrir o aquivo `index.html` no navegador.
+Clone este repositório na sua máquina e abra o aquivo `index.html` no seu navegador de preferência.
 
-Feito clone repositorio - Dener 
+
+## 🙏🏻 Agradecimentos
+
+Esse projeto é uma iniciativa muito legal do Eduardo Escudeiro de juntar vários devs em início de carreira e simular um ambiente de produção real, O Dener Garcia Teve a responsábilidade de projetar o design da aplicação.
+
+
+
+[Eduardo Escudeiro](https://www.linkedin.com/in/escuderodev/)
+
+[Josué Silva](https://www.linkedin.com/in/josuedev/)
+
+[Rafael Herbster](https://www.linkedin.com/in/rafael-herbster-3a24291b8/)
+
+[Dener Garcia](https://www.linkedin.com/in/denergarcia/)
+
+
+
+
+
+
+
