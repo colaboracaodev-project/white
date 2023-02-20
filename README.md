@@ -14,6 +14,7 @@ Foram utilizados HTML CSS E JS para fazer todas as funcionalidades dos projeto, 
 
 
 [Teste o projeto aqui](https://colaboracaodev-project.github.io/white/novo_projeto/).
+
 [UI do projeto](https://www.behance.net/gallery/161662459/Web-app-Colaboracao-DEV)
 
 ## 🛠️ Como rodar o projeto
